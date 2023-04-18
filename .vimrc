@@ -8,18 +8,18 @@ set tabstop=2
 set shiftwidth=2
 " On pressing tab, insert 4 spaces
 set expandtab
-if !exists("g:ycm_semantic_triggers")
-let g:ycm_semantic_triggers = {}
-endif
 
-let g:ycm_semantic_triggers['typescript'] = ['.']
-
-# Autoinstall vim-plug: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+" Auto install vim-plug: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'crusoexia/vim-monokai'
@@ -36,6 +36,12 @@ Plug 'adamclerk/vim-razor'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 call plug#end()
+
+if !exists("g:ycm_semantic_triggers")
+let g:ycm_semantic_triggers = {}
+endif
+
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
