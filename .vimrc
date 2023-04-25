@@ -35,6 +35,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'adamclerk/vim-razor'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 if !exists("g:ycm_semantic_triggers")
