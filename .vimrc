@@ -2,11 +2,8 @@ syntax on
 set number
 :let mapleader = ","
 filetype plugin indent on
-" show existing tab with 4 spaces width
 set tabstop=2
-" when indenting with '>', use 4 spaces width
 set shiftwidth=2
-" On pressing tab, insert 4 spaces
 set expandtab
 if !exists("g:ycm_semantic_triggers")
 let g:ycm_semantic_triggers = {}
