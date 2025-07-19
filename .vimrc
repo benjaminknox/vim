@@ -4,7 +4,12 @@ set number
 filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set expandtab
+set autoindent
+set smartindent
+set cindent
+
 if !exists("g:ycm_semantic_triggers")
 let g:ycm_semantic_triggers = {}
 endif
@@ -15,19 +20,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-" Plug 'crusoexia/vim-monokai'
 Plug 'preservim/nerdtree'
 Plug 'omnisharp/omnisharp-vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'puremourning/vimspector'
-Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yggdroot/indentline'
-Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'adamclerk/vim-razor'
-" Plug 'vim-syntastic/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
@@ -39,14 +41,9 @@ Plug 'sickill/vim-monokai'
 Plug 'jwalton512/vim-blade'
 call plug#end()
 
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_list_window_size = 5
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
-
-hi ALEError ctermfg=black ctermbg=lightred
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
 
 colorscheme monokai
 
